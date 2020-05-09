@@ -3,7 +3,7 @@ module gitee.com/zhimiao/wechat
 go 1.13
 
 require (
-	gitee.com/zhimiao/wechat-sdk v1.1.1
+	gitee.com/zhimiao/wechat-sdk v1.1.2
 	github.com/BurntSushi/toml v0.3.1
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
 	github.com/axgle/mahonia v0.0.0-20180208002826-3358181d7394
@@ -43,4 +43,4 @@ require (
 	gopkg.in/yaml.v2 v2.2.7 // indirect
 )
 // 鉴于此工程与sdk工程同步开发，变动频繁，建议同时下载两个工程运行
-replace gitee.com/zhimiao/wechat-sdk v1.1.1 => ../wechat-sdk
+replace gitee.com/zhimiao/wechat-sdk v1.1.2 => ../wechat-sdk

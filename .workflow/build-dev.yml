@@ -14,7 +14,7 @@ steps:                                             # 构建步骤
     displayName: golang-build                      # 构建步骤显示名
     inputs:                                        # 构建输入参数
       golangVersion: 1.13                          # 指定 Golang 环境版本为 1.13
-      goals: "mkdir output && GOOS=linux GOARCH=amd64 go build -ldflags \"-s -w\" -o output/wechat_linux_amd64.amd64 main.go" # 输出一份 go 源文件并编译不同 OS 的可执行文件到 output 目录
+      goals: "sed -i '/replace /d' go.mod && mkdir output && GOOS=linux GOARCH=amd64 go build -ldflags \"-s -w\" -o output/wechat_linux_amd64.amd64 main.go" # 输出一份 go 源文件并编译不同 OS 的可执行文件到 output 目录
       uploadArtifact: false                         # 开启上传构建物选项
       uploadArtifactOptions:                       # 构建物参数
         artifactPath: './output'                   # 要打包的构建物所在目录

@@ -10,3 +10,4 @@ frpc.ini
 /bin
 /config.dev.toml
 /tools
+/vendor
