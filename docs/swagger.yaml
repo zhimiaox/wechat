@@ -1,0 +1,675 @@
+basePath: /
+definitions:
+  models.Platform:
+    properties:
+      authRedirectURL:
+        description: 用户授权成功回跳地址
+        type: string
+      bizDomain:
+        description: 业务域名
+        type: string
+      createTime:
+        type: string
+      platformID:
+        description: 平台 appid
+        type: string
+      platformKey:
+        description: 平台 消息解密key
+        type: string
+      platformSecret:
+        description: 平台 appsecret
+        type: string
+      platformToken:
+        description: 平台 token
+        type: string
+      serverDomain:
+        description: 服务器域名
+        type: string
+      updateTime:
+        type: string
+    type: object
+  req.CommitCodeParam:
+    properties:
+      miniProgramID:
+        description: 小程序ID
+        type: string
+      templateID:
+        description: 模板编号
+        type: integer
+    required:
+    - miniProgramID
+    - templateID
+    type: object
+  req.ListMiniAppParam:
+    properties:
+      appID:
+        description: 小程序appid
+        type: string
+      lastId:
+        type: integer
+      orderClase:
+        description: 排序方式，desc倒序， asc正序
+        type: string
+      orderColumn:
+        description: 排序列
+        type: string
+      page:
+        type: integer
+      pageSize:
+        type: integer
+      platformID:
+        description: 开放平台ID
+        type: string
+      state:
+        description: -1-授权失效 1授权成功，2审核中，3审核通过，4审核失败，5已发布
+        type: integer
+      version:
+        description: 版本号
+        type: string
+    type: object
+  req.MiniAppConfigParam:
+    properties:
+      appID:
+        description: 小程序appid
+        type: string
+      autoAudit:
+        description: 自动提审(升级) -1否 1是
+        type: integer
+      autoRelease:
+        description: 自动发布-1否 1是
+        type: integer
+      extConfig:
+        description: 小程序扩展配置，发布时会注入至ext.json
+        type: string
+      mchID:
+        description: 支付商户号id
+        type: string
+      secret:
+        description: 小程序secret
+        type: string
+    required:
+    - appID
+    type: object
+  req.PageParam:
+    properties:
+      lastId:
+        type: integer
+      page:
+        type: integer
+      pageSize:
+        type: integer
+    type: object
+  req.PlatformParam:
+    properties:
+      authRedirectURL:
+        description: 用户授权成功回跳地址
+        type: string
+      bizDomain:
+        description: 业务域名
+        type: string
+      platformID:
+        description: 平台 appid
+        type: string
+      platformKey:
+        description: 平台 消息解密key
+        type: string
+      platformSecret:
+        description: 平台 appsecret
+        type: string
+      platformToken:
+        description: 平台 token
+        type: string
+      serverDomain:
+        description: 服务器域名
+        type: string
+    required:
+    - platformID
+    type: object
+  req.SpeedUpAuditParam:
+    properties:
+      auditID:
+        description: 要加急的审核单号
+        type: integer
+      miniProgramID:
+        description: 小程序ID
+        type: string
+    required:
+    - auditID
+    - miniProgramID
+    type: object
+  resp.ApiResult:
+    properties:
+      code:
+        type: integer
+      data:
+        type: object
+      msg:
+        type: string
+    type: object
+  resp.MiniAppListsVO:
+    properties:
+      appID:
+        description: 小程序appid
+        type: string
+      auditID:
+        description: 审核编号
+        type: integer
+      autoAudit:
+        description: 自动提审(升级) -1否 1是
+        type: integer
+      autoRelease:
+        description: 自动发布-1否 1是
+        type: integer
+      createTime:
+        type: string
+      extConfig:
+        description: 小程序扩展配置，发布时会注入至ext.json
+        type: string
+      mchID:
+        description: 支付商户号id
+        type: string
+      originalID:
+        description: 原始ID
+        type: string
+      platformID:
+        description: 开放平台ID
+        type: string
+      refreshToken:
+        description: 接口调用凭据刷新令牌
+        type: string
+      secret:
+        description: 小程序secret
+        type: string
+      state:
+        description: -1-授权失效 1授权成功，2审核中，3审核通过，4审核失败，5已发布
+        type: integer
+      templateListen:
+        description: 模板监听开发小程序(appid)
+        type: string
+      updateTime:
+        type: string
+      version:
+        description: 当前版本
+        type: string
+    type: object
+info:
+  contact:
+    email: mail@xiaoliu.org
+    name: API Support
+    url: http://tools.zhimiao.org
+  description: 纸喵软件系列之服务端
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://zhimiao.org
+  title: 纸喵 wechat API
+  version: "1.0"
+paths:
+  /miniprogram/Config:
+    post:
+      description: 小程序配置
+      parameters:
+      - description: body参数
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/req.MiniAppConfigParam'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": 1,"msg": "操作成功","data": null}'
+          schema:
+            $ref: '#/definitions/resp.ApiResult'
+      summary: 小程序配置
+      tags:
+      - 小程序控制
+  /miniprogram/GetWXACodeUnlimit:
+    get:
+      parameters:
+      - description: 小程序APPID
+        in: query
+        name: MiniProgramID
+        required: true
+        type: string
+      - description: 页面
+        in: query
+        name: Page
+        type: string
+      - description: 场景，不得超过32位，不得含有特殊符号
+        in: query
+        name: Scene
+        type: string
+      summary: 获取线上小程序码
+      tags:
+      - 小程序信息获取
+  /miniprogram/Lists:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 排序列
+        in: query
+        name: orderColumn
+        type: string
+      - description: 小程序appid
+        in: query
+        name: appID
+        type: string
+      - description: 开放平台ID
+        in: query
+        name: platformID
+        type: string
+      - description: -1-授权失效 1授权成功，2审核中，3审核通过，4审核失败，5已发布
+        in: query
+        name: state
+        type: integer
+      - description: 排序方式，desc倒序， asc正序
+        in: query
+        name: orderClase
+        type: string
+      - in: query
+        name: pageSize
+        type: integer
+      - in: query
+        name: lastId
+        type: integer
+      - in: query
+        name: page
+        type: integer
+      - description: 版本号
+        in: query
+        name: version
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/resp.MiniAppListsVO'
+            type: array
+      summary: 小程序列表
+      tags:
+      - 小程序信息获取
+  /oplatform/{PlatformID}/CommitCode:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 入参集合
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/req.CommitCodeParam'
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/resp.ApiResult'
+      summary: 提交代码
+      tags:
+      - 小程序控制
+  /oplatform/{PlatformID}/GetAuthorizerInfo:
+    get:
+      parameters:
+      - description: 小程序APPID
+        in: query
+        name: MiniProgramID
+        required: true
+        type: string
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      summary: 获取小程序授权信息
+      tags:
+      - 小程序信息获取
+  /oplatform/{PlatformID}/GetCodeCategory:
+    get:
+      parameters:
+      - description: 小程序APPID
+        in: query
+        name: MiniProgramID
+        required: true
+        type: string
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      summary: 获取已设置类目
+      tags:
+      - 小程序信息获取
+  /oplatform/{PlatformID}/GetCodePageList:
+    get:
+      parameters:
+      - description: 小程序APPID
+        in: query
+        name: MiniProgramID
+        required: true
+        type: string
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      summary: 获取小程序线上页面列表
+      tags:
+      - 小程序信息获取
+  /oplatform/{PlatformID}/GetLatestAuditStatus:
+    get:
+      parameters:
+      - description: 小程序APPID
+        in: query
+        name: MiniProgramID
+        required: true
+        type: string
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      summary: 获取小程序最后一次审核状态
+      tags:
+      - 小程序信息获取
+  /oplatform/{PlatformID}/GetTestQrcode:
+    get:
+      parameters:
+      - description: 小程序APPID
+        in: query
+        name: MiniProgramID
+        required: true
+        type: string
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      summary: 获取体验二维码
+      tags:
+      - 小程序信息获取
+  /oplatform/{PlatformID}/Release:
+    post:
+      parameters:
+      - description: 小程序APPID
+        in: query
+        name: MiniProgramID
+        required: true
+        type: string
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/resp.ApiResult'
+      summary: 发布已审核通过的小程序
+      tags:
+      - 小程序控制
+  /oplatform/{PlatformID}/SetDomain:
+    post:
+      parameters:
+      - description: 小程序APPID
+        in: query
+        name: MiniProgramID
+        required: true
+        type: string
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/resp.ApiResult'
+      summary: 刷新服务器、业务域名
+      tags:
+      - 小程序控制
+  /oplatform/{PlatformID}/SpeedUpAudit:
+    post:
+      parameters:
+      - description: 入参集合
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/req.SpeedUpAuditParam'
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/resp.ApiResult'
+      summary: 审核加急
+      tags:
+      - 小程序控制
+  /oplatform/{PlatformID}/SubmitAudit:
+    post:
+      parameters:
+      - description: 小程序APPID
+        in: query
+        name: MiniProgramID
+        required: true
+        type: string
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/resp.ApiResult'
+      summary: 提交审核
+      tags:
+      - 小程序控制
+  /oplatform/{PlatformID}/UndoCodeAudit:
+    post:
+      description: 撤销审核 每天1次每月10次
+      parameters:
+      - description: 小程序APPID
+        in: query
+        name: MiniProgramID
+        required: true
+        type: string
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      summary: 撤销审核
+      tags:
+      - 小程序控制
+  /oplatform/{PlatformID}/auth:
+    get:
+      parameters:
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      summary: 授权
+      tags:
+      - 授权回调
+  /oplatform/{PlatformID}/notify:
+    post:
+      parameters:
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      summary: 异步回调
+      tags:
+      - 授权回调
+  /oplatform/{PlatformID}/redirect:
+    get:
+      parameters:
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      summary: 同步回调
+      tags:
+      - 授权回调
+  /oplatform/{PlatformID}/tpl/add:
+    post:
+      parameters:
+      - description: 草稿编号
+        in: query
+        name: draft_id
+        required: true
+        type: string
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      summary: 添加草稿到模板
+      tags:
+      - 第三方平台模板
+  /oplatform/{PlatformID}/tpl/del:
+    delete:
+      parameters:
+      - description: 模板编号
+        in: query
+        name: template_id
+        required: true
+        type: string
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      summary: 删除模板
+      tags:
+      - 第三方平台模板
+  /oplatform/{PlatformID}/tpl/draft:
+    get:
+      parameters:
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/string'
+      summary: 获取草稿列表
+      tags:
+      - 第三方平台模板
+  /oplatform/{PlatformID}/tpl/list:
+    get:
+      parameters:
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      summary: 获取模板列表
+      tags:
+      - 第三方平台模板
+  /oplatform/{PlatformID}/tpl/pushToAuto:
+    post:
+      parameters:
+      - description: 模板编号
+        in: query
+        name: template_id
+        required: true
+        type: string
+      - description: 第三方平台APPID
+        in: path
+        name: PlatformID
+        required: true
+        type: string
+      summary: 将模板推送到所有自动升级小程序
+      tags:
+      - 第三方平台模板
+  /oplatform/manage/Lists:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - in: query
+        name: lastId
+        type: integer
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Platform'
+            type: array
+      summary: 获取平台列表
+      tags:
+      - 第三方平台管理
+  /oplatform/manage/Set:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 入参集合
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/req.PlatformParam'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": 1,"msg": "操作成功","data": null}'
+          schema:
+            $ref: '#/definitions/resp.ApiResult'
+      summary: 设施平台信息
+      tags:
+      - 第三方平台管理
+  /pay/{PayMchID}/notify:
+    post:
+      parameters:
+      - description: 微信支付商户号
+        in: path
+        name: PayMchID
+        required: true
+        type: string
+      summary: 异步回调
+swagger: "2.0"

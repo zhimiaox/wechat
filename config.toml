@@ -1,0 +1,26 @@
+[App]
+  PageSize = 10
+  JwtSecret = "22222$049412"
+  MaxAuditProgress = 10
+
+[Server]
+  ApiHost = "https://wechat.zhimiao.org/zhimiao-wechat"
+  APIListen = ":1316"
+  UDPListen = ":1316"
+  ReadTimeOut = 60
+  WriteTimeOut = 60
+
+[Mysql]
+  Host = "localhost"
+  User = "root"
+  Password = "root"
+  Database = "wechat_platform"
+  TablePrefix = ""
+
+[Redis]
+  Host = "localhost:6379"
+  Auth = ""
+  MaxIdle = 30
+  MaxActive = 30
+  IdleTimeOut = 200
+
