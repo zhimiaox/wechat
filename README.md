@@ -51,3 +51,7 @@ swag init
 > 数据字典
 
 [wechat_platform.sql](./wechat_platform.sql)
+
+#### SDK挂件
+
+[![纸喵软件/wechat-sdk](https://gitee.com/zhimiao/wechat-sdk/widgets/widget_card.svg?colors=4183c4,ffffff,ffffff,e3e9ed,666666,9b9b9b)](https://gitee.com/zhimiao/wechat-sdk)
