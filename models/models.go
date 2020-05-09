@@ -16,8 +16,6 @@ import (
 	"github.com/influxdata/influxdb-client-go"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"github.com/sirupsen/logrus"
-	"io/ioutil"
 	"log"
 	"time"
 )
@@ -33,15 +31,14 @@ type zmRedis struct {
 }
 
 type zmInflux struct {
-	Client *influxdb.Client
+	Client *influxdb2.InfluxDBClient
 }
 
 type CommonMap map[string]interface{}
 
-type ModelBase1 struct {
-	Id         int       `xorm:"not null pk autoincr INT(11)"`
-	UpdateTime time.Time `xorm:"default 'CURRENT_TIMESTAMP' DATETIME"`
-	CreateTime time.Time `xorm:"default 'CURRENT_TIMESTAMP' DATETIME"`
+type ModelBase struct {
+	Num int
+	Has bool
 }
 
 // Start 初始化数据
@@ -144,48 +141,42 @@ func (r *zmRedis) Del(key string) (bool, error) {
 	return redis.Bool(conn.Do("DEL", key))
 }
 
-func (m *zmInflux) DB() *influxdb.Client {
-	client, err := influxdb.New(common.Config.InfluxDB.Host, common.Config.InfluxDB.Token)
-	if err != nil {
-		logrus.Warn("InfluxDB初始化失败")
-	}
+func (m *zmInflux) DB() influxdb2.InfluxDBClient {
+	client := influxdb2.NewClient(common.Config.InfluxDB.Host, common.Config.InfluxDB.Token)
+
 	return client
 }
 
-func (m *zmInflux) Write(bucket string, metric ...influxdb.Metric) (err error) {
+func (m *zmInflux) Write(bucket string, metric ...*influxdb2.Point) (err error) {
 	conn := m.DB()
 	defer conn.Close()
-	_, err = conn.Write(context.Background(), bucket, common.Config.InfluxDB.Org, metric...)
+	writeApi := conn.WriteApi(common.Config.InfluxDB.Org, bucket)
+	for _, v := range metric {
+		writeApi.WritePoint(v)
+	}
+	writeApi.Flush()
 	return
 }
 
 func (m *zmInflux) QueryToRaw(flux string) (raw []byte, err error) {
 	conn := m.DB()
 	defer conn.Close()
-	data, err := conn.QueryCSV(context.Background(), flux, common.Config.InfluxDB.Org)
-	if err != nil {
-		return
-	}
-	raw, err = ioutil.ReadAll(data)
-	if err != nil {
-		return
-	}
+	readApi := conn.QueryApi(common.Config.InfluxDB.Org)
+	data, err := readApi.QueryRaw(context.Background(), flux, influxdb2.DefaultDialect())
+	raw = []byte(data)
 	return
 }
 
 func (m *zmInflux) QueryToArray(flux string) (result []map[string]interface{}, err error) {
 	conn := m.DB()
 	defer conn.Close()
-	data, err := conn.QueryCSV(context.Background(), flux, common.Config.InfluxDB.Org)
+	readApi := conn.QueryApi(common.Config.InfluxDB.Org)
+	data, err := readApi.Query(context.Background(), flux)
 	if err != nil {
 		return
 	}
 	for data.Next() {
-		rows := make(map[string]interface{})
-		err = data.Unmarshal(rows)
-		if data.Unmarshal(rows) == nil {
-			result = append(result, rows)
-		}
+		result = append(result, data.Record().Values())
 	}
 	return
 }
