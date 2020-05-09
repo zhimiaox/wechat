@@ -91,15 +91,19 @@
                 "summary": "小程序列表",
                 "parameters": [
                     {
-                        "type": "string",
-                        "description": "排序列",
-                        "name": "orderColumn",
+                        "type": "integer",
+                        "description": "id分页时使用，如无特殊说明不用此字段",
+                        "name": "last_id",
                         "in": "query"
                     },
                     {
-                        "type": "string",
-                        "description": "小程序appid",
-                        "name": "appID",
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page_size",
                         "in": "query"
                     },
                     {
@@ -116,29 +120,26 @@
                     },
                     {
                         "type": "string",
-                        "description": "排序方式，desc倒序， asc正序",
-                        "name": "orderClase",
+                        "description": "排序列",
+                        "name": "orderColumn",
                         "in": "query"
                     },
                     {
-                        "type": "integer",
-                        "name": "pageSize",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "name": "lastId",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "name": "page",
+                        "type": "string",
+                        "description": "小程序appid",
+                        "name": "appID",
                         "in": "query"
                     },
                     {
                         "type": "string",
                         "description": "版本号",
                         "name": "version",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "排序方式，desc倒序， asc正序",
+                        "name": "orderClase",
                         "in": "query"
                     }
                 ],
@@ -170,7 +171,8 @@
                 "parameters": [
                     {
                         "type": "integer",
-                        "name": "lastId",
+                        "description": "id分页时使用，如无特殊说明不用此字段",
+                        "name": "last_id",
                         "in": "query"
                     },
                     {
@@ -180,7 +182,7 @@
                     },
                     {
                         "type": "integer",
-                        "name": "pageSize",
+                        "name": "page_size",
                         "in": "query"
                     }
                 ],
@@ -798,7 +800,8 @@
                     "description": "小程序appid",
                     "type": "string"
                 },
-                "lastId": {
+                "last_id": {
+                    "description": "id分页时使用，如无特殊说明不用此字段",
                     "type": "integer"
                 },
                 "orderClase": {
@@ -812,7 +815,7 @@
                 "page": {
                     "type": "integer"
                 },
-                "pageSize": {
+                "page_size": {
                     "type": "integer"
                 },
                 "platformID": {
@@ -864,13 +867,14 @@
         "req.PageParam": {
             "type": "object",
             "properties": {
-                "lastId": {
+                "last_id": {
+                    "description": "id分页时使用，如无特殊说明不用此字段",
                     "type": "integer"
                 },
                 "page": {
                     "type": "integer"
                 },
-                "pageSize": {
+                "page_size": {
                     "type": "integer"
                 }
             }

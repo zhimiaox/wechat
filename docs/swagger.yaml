@@ -45,7 +45,8 @@ definitions:
       appID:
         description: 小程序appid
         type: string
-      lastId:
+      last_id:
+        description: id分页时使用，如无特殊说明不用此字段
         type: integer
       orderClase:
         description: 排序方式，desc倒序， asc正序
@@ -55,7 +56,7 @@ definitions:
         type: string
       page:
         type: integer
-      pageSize:
+      page_size:
         type: integer
       platformID:
         description: 开放平台ID
@@ -92,11 +93,12 @@ definitions:
     type: object
   req.PageParam:
     properties:
-      lastId:
+      last_id:
+        description: id分页时使用，如无特殊说明不用此字段
         type: integer
       page:
         type: integer
-      pageSize:
+      page_size:
         type: integer
     type: object
   req.PlatformParam:
@@ -249,14 +251,16 @@ paths:
       consumes:
       - application/json
       parameters:
-      - description: 排序列
+      - description: id分页时使用，如无特殊说明不用此字段
         in: query
-        name: orderColumn
-        type: string
-      - description: 小程序appid
-        in: query
-        name: appID
-        type: string
+        name: last_id
+        type: integer
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: page_size
+        type: integer
       - description: 开放平台ID
         in: query
         name: platformID
@@ -265,22 +269,21 @@ paths:
         in: query
         name: state
         type: integer
-      - description: 排序方式，desc倒序， asc正序
+      - description: 排序列
         in: query
-        name: orderClase
+        name: orderColumn
         type: string
-      - in: query
-        name: pageSize
-        type: integer
-      - in: query
-        name: lastId
-        type: integer
-      - in: query
-        name: page
-        type: integer
+      - description: 小程序appid
+        in: query
+        name: appID
+        type: string
       - description: 版本号
         in: query
         name: version
+        type: string
+      - description: 排序方式，desc倒序， asc正序
+        in: query
+        name: orderClase
         type: string
       produces:
       - application/json
@@ -621,14 +624,15 @@ paths:
       consumes:
       - application/json
       parameters:
-      - in: query
-        name: lastId
+      - description: id分页时使用，如无特殊说明不用此字段
+        in: query
+        name: last_id
         type: integer
       - in: query
         name: page
         type: integer
       - in: query
-        name: pageSize
+        name: page_size
         type: integer
       produces:
       - application/json
