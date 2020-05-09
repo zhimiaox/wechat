@@ -1,0 +1,22 @@
+# ========================================================
+# 纸喵软件ci构建脚本
+# 2020-5-9 21:50:18
+# ========================================================
+name: org-zhimiao-wechat-build-test                      # 流水线唯一ID
+displayName: build-test                       # 流水线显示名称
+triggers:                                          # 触发器
+  push:                                            # 通过 push 事件触发
+    branches:                                      # 触发分支设定
+      - master
+steps:                                             # 构建步骤
+  - step: golangbuild@1                            # 采用 Golang 编译环境
+    name: golang-build                             # 构建步骤唯一ID
+    displayName: golang-build                      # 构建步骤显示名
+    inputs:                                        # 构建输入参数
+      golangVersion: 1.13                          # 指定 Golang 环境版本为 1.13
+      goals: "mkdir output && GOOS=linux GOARCH=amd64 go build -ldflags \"-s -w\" -o output/wechat_linux_amd64.amd64 main.go" # 输出一份 go 源文件并编译不同 OS 的可执行文件到 output 目录
+      uploadArtifact: false                         # 开启上传构建物选项
+      uploadArtifactOptions:                       # 构建物参数
+        artifactPath: './output'                   # 要打包的构建物所在目录
+        artifactRepository: 'gitee-go-zhimiao'     # 制品库名称
+        artifactName: 'zhimiao_wechat_build_releases'             # 制品名称
