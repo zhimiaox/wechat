@@ -1,5 +1,7 @@
 # 纸喵中间件 - 微信
 
+[![giteego build-test](https://gitee.com/zhimiao/wechat/badge/giteego.svg?name=build-test&id=8258)](https://gitee.com/zhimiao/dashboard/projects/zhimiao/wechat/giteegos/8258?branch=master)
+
 #### 介绍
 
 集成微信开放平台、小程序、支付等功能api,没有添加权限校验,通过简易修改即可整合到sass平台系统之中
