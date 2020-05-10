@@ -7,17 +7,7 @@
 
 package utils
 
-import (
-	"fmt"
-	"gopkg.in/go-playground/validator.v9"
-)
-
 // Validator 参数校验错误信息优化
 func Validator(err error) string {
-	if v8, ok := err.(validator.ValidationErrors); ok {
-		for _, v := range v8 {
-			return fmt.Sprintf("%s参数%s规则校验失败", v.Field(), v.Tag())
-		}
-	}
-	return "参数绑定错误"
+	return "参数绑定错误" + err.Error()
 }

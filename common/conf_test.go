@@ -1,8 +1,9 @@
 /*
  * 纸喵软件
- * Copyright (c) 2017~2020 http://zhimiao.org All rights reserved.
+ * Copyright (c) 2017~2020 zhimiao.org All rights reserved.
  * Author: 倒霉狐狸 <mail@xiaoliu.org>
- * Date: 2020/3/3 下午4:26
+ * Date: 2020/5/9 下午11:10
+ * LastModified: 2020/5/9 下午11:07
  */
 
 package common

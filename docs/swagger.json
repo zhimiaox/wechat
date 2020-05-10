@@ -91,6 +91,18 @@
                 "summary": "小程序列表",
                 "parameters": [
                     {
+                        "type": "string",
+                        "description": "小程序appid",
+                        "name": "appID",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "-1-授权失效 1授权成功，2审核中，3审核通过，4审核失败，5已发布",
+                        "name": "state",
+                        "in": "query"
+                    },
+                    {
                         "type": "integer",
                         "description": "id分页时使用，如无特殊说明不用此字段",
                         "name": "last_id",
@@ -102,20 +114,9 @@
                         "in": "query"
                     },
                     {
-                        "type": "integer",
-                        "name": "page_size",
-                        "in": "query"
-                    },
-                    {
                         "type": "string",
-                        "description": "开放平台ID",
-                        "name": "platformID",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "-1-授权失效 1授权成功，2审核中，3审核通过，4审核失败，5已发布",
-                        "name": "state",
+                        "description": "版本号",
+                        "name": "version",
                         "in": "query"
                     },
                     {
@@ -126,20 +127,19 @@
                     },
                     {
                         "type": "string",
-                        "description": "小程序appid",
-                        "name": "appID",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "版本号",
-                        "name": "version",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
                         "description": "排序方式，desc倒序， asc正序",
                         "name": "orderClase",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page_size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "开放平台ID",
+                        "name": "platformID",
                         "in": "query"
                     }
                 ],

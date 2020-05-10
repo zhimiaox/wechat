@@ -251,6 +251,14 @@ paths:
       consumes:
       - application/json
       parameters:
+      - description: 小程序appid
+        in: query
+        name: appID
+        type: string
+      - description: -1-授权失效 1授权成功，2审核中，3审核通过，4审核失败，5已发布
+        in: query
+        name: state
+        type: integer
       - description: id分页时使用，如无特殊说明不用此字段
         in: query
         name: last_id
@@ -258,32 +266,24 @@ paths:
       - in: query
         name: page
         type: integer
+      - description: 版本号
+        in: query
+        name: version
+        type: string
+      - description: 排序列
+        in: query
+        name: orderColumn
+        type: string
+      - description: 排序方式，desc倒序， asc正序
+        in: query
+        name: orderClase
+        type: string
       - in: query
         name: page_size
         type: integer
       - description: 开放平台ID
         in: query
         name: platformID
-        type: string
-      - description: -1-授权失效 1授权成功，2审核中，3审核通过，4审核失败，5已发布
-        in: query
-        name: state
-        type: integer
-      - description: 排序列
-        in: query
-        name: orderColumn
-        type: string
-      - description: 小程序appid
-        in: query
-        name: appID
-        type: string
-      - description: 版本号
-        in: query
-        name: version
-        type: string
-      - description: 排序方式，desc倒序， asc正序
-        in: query
-        name: orderClase
         type: string
       produces:
       - application/json
