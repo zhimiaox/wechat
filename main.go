@@ -10,6 +10,7 @@ package main
 import (
 	"gitee.com/zhimiao/wechat/api"
 	"gitee.com/zhimiao/wechat/common"
+	"gitee.com/zhimiao/wechat/models"
 )
 
 // @title 纸喵 wechat API
@@ -31,6 +32,7 @@ func main() {
 	if err != nil {
 		panic("配置加载失败")
 	}
+	models.Start()
 	go api.Start()
 	select {}
 }

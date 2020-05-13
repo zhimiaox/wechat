@@ -22,7 +22,6 @@ require (
 	github.com/swaggo/gin-swagger v1.2.0
 	github.com/swaggo/swag v1.6.5
 	golang.org/x/crypto v0.0.0-20200429183012-4b2356b1ed79
-	gopkg.in/go-playground/validator.v9 v9.31.0
 )
 
 // 鉴于此工程与sdk工程同步开发，变动频繁，建议同时下载两个工程运行
