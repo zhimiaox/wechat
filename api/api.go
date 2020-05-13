@@ -70,6 +70,7 @@ func initRoute() {
 		miniApp.GET("/Lists", Miniprogram.Lists)
 		miniApp.POST("/Config", Miniprogram.Config)
 		miniApp.GET("/GetWXACodeUnlimit", Miniprogram.GetWXACodeUnlimit)
+		miniApp.GET("/Send", Miniprogram.Send)
 	}
 
 	/* ------ 微信开放平台模块 ------- */

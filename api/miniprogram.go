@@ -8,6 +8,7 @@
 package api
 
 import (
+	"gitee.com/zhimiao/wechat-sdk/message"
 	"gitee.com/zhimiao/wechat-sdk/miniprogram"
 	"gitee.com/zhimiao/wechat/common/utils"
 	"gitee.com/zhimiao/wechat/models"
@@ -24,7 +25,7 @@ type miniprogramApi struct{}
 var Miniprogram = &miniprogramApi{}
 
 // @Summary 小程序列表
-// @Tags 小程序信息获取
+// @Tags 小程序
 // @Produce  json
 // @Accept  json
 // @Param body query req.ListMiniAppParam true "入参集合"
@@ -52,7 +53,7 @@ func (m *miniprogramApi) Lists(c *gin.Context) {
 
 // @Summary 小程序配置
 // @Description 小程序配置
-// @Tags 小程序控制
+// @Tags 小程序
 // @Produce json
 // @Param body body req.MiniAppConfigParam true "body参数"
 // @Success 200 {object} resp.ApiResult "{"code": 1,"msg": "操作成功","data": null}"
@@ -73,7 +74,7 @@ func (m *miniprogramApi) Config(c *gin.Context) {
 }
 
 // @Summary 获取线上小程序码
-// @Tags 小程序信息获取
+// @Tags 小程序
 // @Param MiniProgramID query string true "小程序APPID"
 // @Param Page query string false "页面"
 // @Param Scene query string false "场景，不得超过32位，不得含有特殊符号"
@@ -103,4 +104,29 @@ func (m *miniprogramApi) GetWXACodeUnlimit(c *gin.Context) {
 		return
 	}
 	c.Data(http.StatusOK, "image/jpeg", ret)
+}
+
+// @Summary 发送客服消息(测)
+// @Tags 小程序
+// @Param MiniProgramID query string true "小程序APPID"
+// @Param Page query string false "页面"
+// @Param Scene query string false "场景，不得超过32位，不得含有特殊符号"
+// @Router /miniprogram/send [get]
+func (m *miniprogramApi) Send(c *gin.Context) {
+	param := &req.WxACodeParam{}
+	if err := c.ShouldBind(param); err != nil {
+		resp.NewApiResult(-4, utils.Validator(err)).Json(c)
+		return
+	}
+	maService := ws.GetMiniApp(param.MiniProgramID)
+	if maService == nil {
+		resp.NewApiResult(-5, "小程序配置无效").Json(c)
+		return
+	}
+	manager := message.NewMessageManager(maService.Context)
+	err := manager.Send(message.NewCustomerTextMessage("orKb-41QOJ0zHo6JSwaOMPjMVCpM", "bllallalalal"))
+	if err != nil {
+		logrus.Warn(err.Error())
+	}
+	resp.NewApiResult(1).Json(c)
 }
