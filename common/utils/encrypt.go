@@ -14,11 +14,12 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"fmt"
+	"time"
+
 	"gitee.com/zhimiao/wechat/common"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/sirupsen/logrus"
 	"golang.org/x/crypto/bcrypt"
-	"time"
 )
 
 // MD5 md5 encryption

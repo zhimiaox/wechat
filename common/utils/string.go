@@ -8,8 +8,9 @@
 package utils
 
 import (
-	"github.com/axgle/mahonia"
 	"unicode/utf8"
+
+	"github.com/axgle/mahonia"
 )
 
 func MustUtf8(s string) string {

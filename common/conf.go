@@ -9,9 +9,10 @@ package common
 
 import (
 	"bytes"
+	"os"
+
 	"github.com/BurntSushi/toml"
 	"github.com/jinzhu/configor"
-	"os"
 )
 
 type config struct {
