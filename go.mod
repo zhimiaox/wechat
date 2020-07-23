@@ -25,4 +25,4 @@ require (
 )
 
 // 鉴于此工程与sdk工程同步开发，变动频繁，建议同时下载两个工程运行
-replace gitee.com/zhimiao/wechat-sdk v1.1.2 => ../wechat-sdk
+// replace gitee.com/zhimiao/wechat-sdk v1.1.2 => ../wechat-sdk
