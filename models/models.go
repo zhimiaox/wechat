@@ -11,7 +11,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"gitee.com/zhimiao/wechat/common"
+	"github.com/zhi-miao/wechat/common"
 	"github.com/gomodule/redigo/redis"
 	"github.com/influxdata/influxdb-client-go"
 	"github.com/jinzhu/gorm"

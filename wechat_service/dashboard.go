@@ -8,7 +8,7 @@
 package wechat_service
 
 import (
-	"gitee.com/zhimiao/wechat/resp"
+	"github.com/zhi-miao/wechat/resp"
 	"sync"
 )
 

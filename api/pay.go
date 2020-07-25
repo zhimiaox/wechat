@@ -8,10 +8,10 @@
 package api
 
 import (
-	"gitee.com/zhimiao/wechat/common/utils"
-	"gitee.com/zhimiao/wechat/req"
-	"gitee.com/zhimiao/wechat/resp"
-	ws "gitee.com/zhimiao/wechat/wechat_service"
+	"github.com/zhi-miao/wechat/common/utils"
+	"github.com/zhi-miao/wechat/req"
+	"github.com/zhi-miao/wechat/resp"
+	ws "github.com/zhi-miao/wechat/wechat_service"
 	"github.com/gin-gonic/gin"
 	"github.com/siddontang/go/log"
 )

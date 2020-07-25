@@ -9,11 +9,11 @@ package api
 
 import (
 	"fmt"
-	"gitee.com/zhimiao/wechat/common"
-	"gitee.com/zhimiao/wechat/common/utils"
-	_ "gitee.com/zhimiao/wechat/docs"
-	"gitee.com/zhimiao/wechat/req"
-	"gitee.com/zhimiao/wechat/resp"
+	"github.com/zhi-miao/wechat/common"
+	"github.com/zhi-miao/wechat/common/utils"
+	_ "github.com/zhi-miao/wechat/docs"
+	"github.com/zhi-miao/wechat/req"
+	"github.com/zhi-miao/wechat/resp"
 	"github.com/chenjiandongx/ginprom"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"

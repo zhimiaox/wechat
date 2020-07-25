@@ -8,9 +8,9 @@
 package main
 
 import (
-	"gitee.com/zhimiao/wechat/api"
-	"gitee.com/zhimiao/wechat/common"
-	"gitee.com/zhimiao/wechat/models"
+	"github.com/zhi-miao/wechat/api"
+	"github.com/zhi-miao/wechat/common"
+	"github.com/zhi-miao/wechat/models"
 )
 
 // @title 纸喵 wechat API

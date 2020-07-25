@@ -12,8 +12,8 @@ import (
 	"fmt"
 
 	"gitee.com/zhimiao/wechat-sdk"
-	"gitee.com/zhimiao/wechat/common"
-	"gitee.com/zhimiao/wechat/models"
+	"github.com/zhi-miao/wechat/common"
+	"github.com/zhi-miao/wechat/models"
 )
 
 type Config wechat.Config

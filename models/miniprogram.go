@@ -9,7 +9,7 @@ package models
 
 import (
 	"fmt"
-	"gitee.com/zhimiao/wechat/req"
+	"github.com/zhi-miao/wechat/req"
 	"time"
 )
 

@@ -16,7 +16,7 @@ import (
 	"fmt"
 	"time"
 
-	"gitee.com/zhimiao/wechat/common"
+	"github.com/zhi-miao/wechat/common"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/sirupsen/logrus"
 	"golang.org/x/crypto/bcrypt"

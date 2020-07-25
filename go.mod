@@ -1,4 +1,4 @@
-module gitee.com/zhimiao/wechat
+module github.com/zhi-miao/wechat
 
 go 1.14
 

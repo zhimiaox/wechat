@@ -15,7 +15,7 @@ import (
 	"gitee.com/zhimiao/wechat-sdk/miniprogram"
 	"gitee.com/zhimiao/wechat-sdk/open"
 	"gitee.com/zhimiao/wechat-sdk/pay"
-	"gitee.com/zhimiao/wechat/models"
+	"github.com/zhi-miao/wechat/models"
 )
 
 // GetWechatService 初始化获取微信原始句柄
