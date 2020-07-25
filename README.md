@@ -19,7 +19,7 @@
 
 此工程提供了vue的前端组件，仓库传送门 [gitee.com/zhimiao/wechat-vue](https://gitee.com/zhimiao/wechat-vue)
 
-鉴于此工程与[wechat-sdk](https://gitee.com/zhimiao/wechat-sdk)工程同步开发，变动频繁，建议同时下载两个工程运行
+鉴于此工程与[wechat-sdk](https://github.com/zhi-miao/wechat-sdk)工程同步开发，变动频繁，建议同时下载两个工程运行
 
 工程依赖MySQL数据库、Redis缓存请预先配置
 
@@ -52,4 +52,4 @@ swag init
 
 #### SDK挂件
 
-[![纸喵软件/wechat-sdk](https://gitee.com/zhimiao/wechat-sdk/widgets/widget_card.svg?colors=4183c4,ffffff,ffffff,e3e9ed,666666,9b9b9b)](https://gitee.com/zhimiao/wechat-sdk)
+[![纸喵软件/wechat-sdk](https://github.com/zhi-miao/wechat-sdk/widgets/widget_card.svg?colors=4183c4,ffffff,ffffff,e3e9ed,666666,9b9b9b)](https://github.com/zhi-miao/wechat-sdk)

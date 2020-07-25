@@ -3,7 +3,6 @@ module github.com/zhi-miao/wechat
 go 1.14
 
 require (
-	gitee.com/zhimiao/wechat-sdk v1.1.2
 	github.com/BurntSushi/toml v0.3.1
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
 	github.com/axgle/mahonia v0.0.0-20180208002826-3358181d7394
@@ -21,8 +20,9 @@ require (
 	github.com/swaggo/files v0.0.0-20190704085106-630677cd5c14
 	github.com/swaggo/gin-swagger v1.2.0
 	github.com/swaggo/swag v1.6.5
+	github.com/zhi-miao/wechat-sdk v1.1.3
 	golang.org/x/crypto v0.0.0-20200429183012-4b2356b1ed79
 )
 
 // 鉴于此工程与sdk工程同步开发，变动频繁，建议同时下载两个工程运行
-// replace gitee.com/zhimiao/wechat-sdk v1.1.2 => ../wechat-sdk
+// replace github.com/zhi-miao/wechat-sdk v1.1.2 => ../wechat-sdk

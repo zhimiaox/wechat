@@ -8,10 +8,10 @@
 package wechat_service
 
 import (
-	"gitee.com/zhimiao/wechat-sdk/message"
-	"gitee.com/zhimiao/wechat-sdk/pay"
-	"github.com/zhi-miao/wechat/models"
 	"github.com/sirupsen/logrus"
+	"github.com/zhi-miao/wechat-sdk/message"
+	"github.com/zhi-miao/wechat-sdk/pay"
+	"github.com/zhi-miao/wechat/models"
 	"time"
 )
 

@@ -10,10 +10,10 @@ package wechat_service
 import (
 	"encoding/json"
 	"fmt"
-	"gitee.com/zhimiao/wechat-sdk/open"
+	"github.com/sirupsen/logrus"
+	"github.com/zhi-miao/wechat-sdk/open"
 	"github.com/zhi-miao/wechat/common"
 	"github.com/zhi-miao/wechat/models"
-	"github.com/sirupsen/logrus"
 	"strconv"
 	"strings"
 )

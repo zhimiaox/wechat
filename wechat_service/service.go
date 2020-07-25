@@ -11,10 +11,10 @@
 package wechat_service
 
 import (
-	"gitee.com/zhimiao/wechat-sdk"
-	"gitee.com/zhimiao/wechat-sdk/miniprogram"
-	"gitee.com/zhimiao/wechat-sdk/open"
-	"gitee.com/zhimiao/wechat-sdk/pay"
+	"github.com/zhi-miao/wechat-sdk"
+	"github.com/zhi-miao/wechat-sdk/miniprogram"
+	"github.com/zhi-miao/wechat-sdk/open"
+	"github.com/zhi-miao/wechat-sdk/pay"
 	"github.com/zhi-miao/wechat/models"
 )
 

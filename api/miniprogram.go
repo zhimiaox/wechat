@@ -8,15 +8,15 @@
 package api
 
 import (
-	"gitee.com/zhimiao/wechat-sdk/message"
-	"gitee.com/zhimiao/wechat-sdk/miniprogram"
+	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
+	"github.com/zhi-miao/wechat-sdk/message"
+	"github.com/zhi-miao/wechat-sdk/miniprogram"
 	"github.com/zhi-miao/wechat/common/utils"
 	"github.com/zhi-miao/wechat/models"
 	"github.com/zhi-miao/wechat/req"
 	"github.com/zhi-miao/wechat/resp"
 	ws "github.com/zhi-miao/wechat/wechat_service"
-	"github.com/gin-gonic/gin"
-	"github.com/sirupsen/logrus"
 	"net/http"
 )
 

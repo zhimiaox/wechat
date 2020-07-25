@@ -11,7 +11,7 @@ import (
 	"encoding/base64"
 	"fmt"
 
-	"gitee.com/zhimiao/wechat-sdk"
+	"github.com/zhi-miao/wechat-sdk"
 	"github.com/zhi-miao/wechat/common"
 	"github.com/zhi-miao/wechat/models"
 )
